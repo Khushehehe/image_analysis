@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VisionIQ | AI Image Analysis</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-icon">✦</span> VisionIQ</div>
+    <span class="top-label">AZURE AI • COMPUTER VISION</span>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow">INTELLIGENT IMAGE UNDERSTANDING</div>
+      <h1>See beyond the <span>pixels.</span></h1>
+      <p>Upload an image and let AI describe its contents, identify objects, discover visual tags and read visible text.</p>
+    </section>
+
+    <section class="workspace">
+      <div class="upload-panel">
+        <div class="section-heading">
+          <div><span class="step">01</span><h2>Upload an image</h2></div>
+          <span class="muted">PNG, JPG, WEBP · Max 8 MB</span>
+        </div>
+        <label class="dropzone" id="dropzone" for="imageInput">
+          <input type="file" id="imageInput" accept="image/png,image/jpeg,image/webp,image/bmp">
+          <div class="upload-symbol">↑</div>
+          <strong>Drop your image here</strong>
+          <span>or <u>browse files</u></span>
+          <small id="fileName">Choose an image to begin</small>
+        </label>
+        <div class="preview-wrap" id="previewWrap" hidden>
+          <img id="preview" alt="Selected image preview">
+          <button class="remove-btn" id="removeBtn" type="button">Remove image</button>
+        </div>
+        <button class="analyze-btn" id="analyzeBtn" disabled>✦ Analyze image</button>
+        <p class="privacy-note">Your image is processed for this demonstration. Avoid uploading sensitive personal images.</p>
+      </div>
+
+      <div class="results-panel">
+        <div class="section-heading">
+          <div><span class="step">02</span><h2>AI insights</h2></div>
+          <span class="status" id="status">WAITING FOR IMAGE</span>
+        </div>
+        <div class="empty-state" id="emptyState">
+          <div class="empty-art">▧</div>
+          <strong>Your analysis will appear here</strong>
+          <span>Upload an image and select Analyze image.</span>
+        </div>
+        <div id="results" hidden>
+          <div class="mode-note" id="modeNote"></div>
+          <article class="result-card">
+            <h3>Image caption</h3><p id="caption">—</p>
+          </article>
+          <article class="result-card">
+            <h3>Detected tags</h3><div class="chips" id="tags"></div>
+          </article>
+          <article class="result-card">
+            <h3>Detected objects</h3><div id="objects" class="object-list"></div>
+          </article>
+          <article class="result-card">
+            <h3>Extracted text (OCR)</h3><div id="ocr" class="ocr-text"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <footer>VisionIQ · Academic project demonstrating Microsoft Azure AI Vision concepts</footer>
+  </main>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
